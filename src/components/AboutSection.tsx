@@ -1,3 +1,33 @@
+const values = [
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+      </svg>
+    ),
+    title: "情報は厳重に保護",
+    body: "情報提供者様のお名前・連絡先が売主・買主に開示されることはありません。すべての情報は弊社内でのみ取り扱います。",
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    title: "費用は一切かかりません",
+    body: "情報提供に費用・手数料は不要です。報酬は成約が完了した時点でのみ発生します。リスクゼロで参加できます。",
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    title: "全国対応",
+    body: "北海道から沖縄まで、離島・過疎地域も含め全国の物件・事業情報に対応しています。海外在住の方もご相談ください。",
+  },
+];
+
 export default function AboutSection() {
   return (
     <section
@@ -6,7 +36,7 @@ export default function AboutSection() {
       aria-label="一越株式会社について"
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Left — why we pay */}
           <div>
             <span className="text-[#c8973a] text-sm font-semibold tracking-widest uppercase">
@@ -42,54 +72,27 @@ export default function AboutSection() {
             </div>
           </div>
 
-          {/* Right — company info */}
-          <div
-            className="bg-[#f5f5f0] border border-[#e5e7eb] p-8"
-            style={{ borderRadius: "4px" }}
-          >
-            <h3 className="text-[#1a1a2e] font-bold text-lg mb-6">
-              会社概要
-            </h3>
-
-            <dl className="space-y-4">
-              {[
-                { label: "会社名", value: "一越株式会社" },
-                { label: "設立", value: "____年" },
-                {
-                  label: "宅地建物取引業免許",
-                  value: "____知事（__）第______号",
-                },
-                { label: "所在地", value: "東京都____" },
-                { label: "対応エリア", value: "全国" },
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="grid grid-cols-2 gap-4 pb-4 border-b border-[#e5e7eb] last:border-0 last:pb-0"
-                >
-                  <dt className="text-[#6b7280] text-sm">{item.label}</dt>
-                  <dd className="text-[#1a1a2e] text-sm font-medium">
-                    {item.value}
-                  </dd>
+          {/* Right — value cards */}
+          <div className="space-y-4">
+            {values.map((v, i) => (
+              <div
+                key={i}
+                className="bg-white border border-[#e5e7eb] p-6 flex items-start gap-5"
+                style={{ borderRadius: "4px" }}
+              >
+                <div className="text-[#1b3a6b] flex-shrink-0 mt-0.5">
+                  {v.icon}
                 </div>
-              ))}
-            </dl>
-
-            {/* Stats */}
-            <div className="mt-8 grid grid-cols-3 gap-4 pt-6 border-t border-[#e5e7eb]">
-              {[
-                { num: "____", unit: "年", label: "設立" },
-                { num: "____", unit: "件", label: "取扱実績" },
-                { num: "全国", unit: "", label: "対応エリア" },
-              ].map((s, i) => (
-                <div key={i} className="text-center">
-                  <div className="text-2xl font-bold text-[#1b3a6b]">
-                    {s.num}
-                    <span className="text-sm font-normal">{s.unit}</span>
-                  </div>
-                  <div className="text-xs text-[#6b7280] mt-1">{s.label}</div>
+                <div>
+                  <h3 className="text-[#1a1a2e] font-bold text-base mb-2">
+                    {v.title}
+                  </h3>
+                  <p className="text-[#6b7280] text-sm leading-relaxed">
+                    {v.body}
+                  </p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

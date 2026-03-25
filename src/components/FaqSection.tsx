@@ -35,8 +35,9 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   return (
     <div className="border-b border-[#e5e7eb] last:border-0">
       <button
+        type="button"
         onClick={() => setOpen(!open)}
-        className="w-full flex items-start justify-between gap-4 py-6 text-left group"
+        className="w-full flex items-start justify-between gap-4 py-6 text-left group cursor-pointer"
         aria-expanded={open}
       >
         <span className="flex items-start gap-3">

@@ -64,8 +64,10 @@ export default function FormSection() {
   };
 
   const inputClass =
-    "w-full border border-[#e5e7eb] bg-white px-4 py-3 text-sm text-[#1a1a2e] focus:outline-none focus:border-[#1b3a6b] transition-colors placeholder:text-[#9ca3af]";
-  const labelClass = "block text-sm font-medium text-[#1a1a2e] mb-1.5";
+    "w-full border border-white/15 bg-[#243554] px-4 py-3 text-sm text-white focus:outline-none focus:border-[#c8973a] transition-colors placeholder:text-white/30";
+  const selectClass =
+    "w-full border border-white/15 bg-[#243554] px-4 py-3 text-sm text-white focus:outline-none focus:border-[#c8973a] transition-colors";
+  const labelClass = "block text-sm font-medium text-white/80 mb-1.5";
   const errorClass = "mt-1 text-xs text-red-500";
 
   return (
