@@ -1,7 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_APP_PASSWORD,
+  },
+});
 
 export async function POST(req: NextRequest) {
   try {
@@ -46,38 +52,12 @@ export async function POST(req: NextRequest) {
 ${comment || "なし"}
     `.trim();
 
-    await resend.emails.send({
-      from: "一越株式会社 <noreply@ichikoshi.co.jp>",
-      to: process.env.NOTIFICATION_EMAIL ?? "info@ichikoshi.co.jp",
+    await transporter.sendMail({
+      from: `"一越株式会社" <${process.env.GMAIL_USER}>`,
+      to: process.env.NOTIFICATION_EMAIL,
       subject: `【新規情報提供】${objectType} / ${prefecture}`,
       text: emailBody,
     });
-
-    // Auto-reply to submitter if email provided
-    const isEmail = contact.includes("@");
-    if (isEmail) {
-      await resend.emails.send({
-        from: "一越株式会社 <noreply@ichikoshi.co.jp>",
-        to: contact,
-        subject: "情報提供を受け付けました | 一越株式会社",
-        text: `${name} 様
-
-この度は一越株式会社への情報提供、誠にありがとうございます。
-
-お送りいただいた情報を確認し、通常2営業日以内に担当者よりご連絡いたします。
-しばらくお待ちください。
-
-なお、ご提供いただいた情報は弊社プライバシーポリシーに従い厳重に管理いたします。
-情報提供者様の情報が売主・買主に開示されることはありません。
-
-─────────────────────
-一越株式会社
-宅地建物取引業免許：____知事（__）第______号
-Email: info@ichikoshi.co.jp
-─────────────────────
-        `.trim(),
-      });
-    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
