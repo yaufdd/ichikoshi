@@ -32,7 +32,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="py-24 lg:py-32 bg-[#fafaf8]"
+      className="py-36 lg:py-48 bg-[#fafaf8]"
       aria-label="一越株式会社について"
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-20">
@@ -73,11 +73,11 @@ export default function AboutSection() {
           </div>
 
           {/* Right — value cards */}
-          <div className="space-y-4">
+          <div className="space-y-5">
             {values.map((v, i) => (
               <div
                 key={i}
-                className="bg-white border border-[#e5e7eb] p-6 flex items-start gap-5"
+                className="bg-white border border-[#e5e7eb] p-8 flex items-start gap-6"
                 style={{ borderRadius: "4px" }}
               >
                 <div className="text-[#1b3a6b] flex-shrink-0 mt-0.5">

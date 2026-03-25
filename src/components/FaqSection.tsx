@@ -37,7 +37,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="w-full flex items-start justify-between gap-4 py-6 text-left group cursor-pointer"
+        className="w-full flex items-start justify-between gap-4 py-8 text-left group cursor-pointer"
         aria-expanded={open}
       >
         <span className="flex items-start gap-3">
@@ -76,23 +76,23 @@ export default function FaqSection() {
   return (
     <section
       id="faq"
-      className="py-24 lg:py-32 bg-[#f5f5f0]"
+      className="py-36 lg:py-48 bg-[#f5f5f0]"
       aria-label="よくあるご質問"
     >
       <div className="max-w-3xl mx-auto px-6 lg:px-20">
         {/* Header */}
-        <div className="text-center mb-16">
-          <span className="text-[#c8973a] text-sm font-semibold tracking-widest uppercase">
+        <div className="text-center mb-20">
+          <span className="text-[#c8973a] text-xs font-semibold tracking-[0.2em] uppercase">
             FAQ
           </span>
-          <h2 className="text-3xl lg:text-4xl font-bold text-[#1a1a2e] mt-3">
+          <h2 className="text-3xl lg:text-5xl font-bold text-[#1a1a2e] mt-4 tracking-tight">
             よくあるご質問
           </h2>
         </div>
 
         {/* FAQ list */}
         <div
-          className="bg-white border border-[#e5e7eb] px-8"
+          className="bg-white border border-[#e5e7eb] px-10"
           style={{ borderRadius: "4px" }}
         >
           {faqs.map((faq, i) => (

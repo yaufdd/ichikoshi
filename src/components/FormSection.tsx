@@ -73,19 +73,19 @@ export default function FormSection() {
   return (
     <section
       id="form"
-      className="py-24 lg:py-32 bg-[#1a1a2e]"
+      className="py-36 lg:py-48 bg-[#1a1a2e]"
       aria-label="情報提供フォーム"
     >
       <div className="max-w-2xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <span className="text-[#c8973a] text-sm font-semibold tracking-widest uppercase">
+        <div className="text-center mb-16">
+          <span className="text-[#c8973a] text-xs font-semibold tracking-[0.2em] uppercase">
             情報提供フォーム
           </span>
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mt-3 mb-4">
+          <h2 className="text-3xl lg:text-5xl font-bold text-white mt-4 mb-5 tracking-tight">
             物件・事業情報をお送りください
           </h2>
-          <p className="text-white/50 text-sm leading-relaxed">
+          <p className="text-white/50 text-base leading-relaxed">
             記入は5分ほどで完了します。不明な点は空欄で構いません。
             <br />
             まず情報をお送りいただければ、担当者よりご連絡いたします。
