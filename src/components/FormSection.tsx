@@ -50,10 +50,21 @@ export default function FormSection() {
   const onSubmit = async (data: FormData) => {
     setStatus("loading");
     try {
-      const res = await fetch("/api/submit", {
+      const res = await fetch(process.env.NEXT_PUBLIC_FORMSPREE_URL!, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          "物件・事業の種類": data.objectType,
+          "都道府県": data.prefecture,
+          "市区町村": data.city || "未記入",
+          "概算金額": data.estimatedPrice || "未記入",
+          "情報の種類": data.ownerStatus,
+          "売却検討度": data.saleUrgency || "未記入",
+          "お名前": data.name,
+          "連絡先": data.contact,
+          "希望連絡方法": data.contactMethod,
+          "補足コメント": data.comment || "なし",
+        }),
       });
       if (!res.ok) throw new Error("送信に失敗しました");
       setStatus("success");

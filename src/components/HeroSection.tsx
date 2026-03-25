@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function HeroSection() {
   return (
     <section
@@ -6,10 +8,13 @@ export default function HeroSection() {
     >
       {/* Background photo */}
       <div className="absolute inset-0">
-        <img
+        <Image
           src="/hero-bg.jpg"
           alt=""
-          className="w-full h-full object-cover object-center"
+          fill
+          className="object-cover object-center"
+          priority
+          unoptimized
           aria-hidden="true"
         />
         {/* Dark overlay for readability */}
