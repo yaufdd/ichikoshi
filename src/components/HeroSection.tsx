@@ -1,4 +1,4 @@
-import Image from "next/image";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export default function HeroSection() {
   return (
@@ -8,13 +8,11 @@ export default function HeroSection() {
     >
       {/* Background photo */}
       <div className="absolute inset-0">
-        <Image
-          src="/hero-bg.jpg"
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`${basePath}/hero-bg.jpg`}
           alt=""
-          fill
-          className="object-cover object-center"
-          priority
-          unoptimized
+          className="w-full h-full object-cover object-center"
           aria-hidden="true"
         />
         {/* Dark overlay for readability */}
